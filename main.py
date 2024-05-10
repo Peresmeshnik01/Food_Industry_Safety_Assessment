@@ -1,7 +1,8 @@
 import pygame
 import sys
 import os
-from quiz1 import questions, options, answers, images, font, display_question
+import rez1
+from quiz1 import questions, guesses, options, answers, images, font, display_question
 
 pygame.init()
 
@@ -32,8 +33,9 @@ while running and questions_num < len(questions):
                 text_rect = font.render(option, True, BLACK).get_rect(topleft=(50 if i == 0 else 500, 150 + i))
                 if text_rect.collidepoint(pygame.mouse.get_pos()):
                     choice = option
-                    # Добавьте здесь логику для выбора ответа
-                    questions_num += 1
 
+                    questions_num += 1
+            file_path = 'quiz1_result.csv'
+            rez1.save_results_to_csv(guesses, answers, file_path)
 pygame.quit()
 sys.exit()
