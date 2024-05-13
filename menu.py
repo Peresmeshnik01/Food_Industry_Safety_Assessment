@@ -2,6 +2,7 @@ import pygame
 import sys
 from moviepy.editor import VideoFileClip, AudioFileClip
 import time
+import os
 
 def menu_anim():
     pygame.init()
@@ -10,13 +11,17 @@ def menu_anim():
     screen = pygame.display.set_mode(window_size)
 
     pygame.mixer.init()
-   
-    theme_music = pygame.mixer.Sound('Пальма.mp3')
+    sound_folder = "sounds"
+    file_name = "Пальма.mp3"
+    file_path = os.path.join(sound_folder, file_name)
+
+    theme_music = pygame.mixer.Sound(file_path)
     theme_channel = pygame.mixer.Channel(0)
-    theme_channel.play(theme_music, loops=-1) 
-    pygame.mixer.music.load('ВыГотовыДети.mp3')
+    theme_channel.play(theme_music, loops=-1)
+    
+    pygame.mixer.music.load(os.path.join("sounds", 'ВыГотовыДети.mp3'))
     pygame.mixer.music.play()
-    background_image = pygame.image.load('menu.png')
+    background_image = pygame.image.load(os.path.join("menu", 'menu.png'))
     background_image = pygame.transform.scale(background_image, window_size)
     WHITE = (255, 255, 255)  
 
@@ -37,8 +42,10 @@ def menu_anim():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN and start_button_rect.collidepoint(event.pos):
-                
-                button_click_sound = pygame.mixer.Sound('ДаКапитан.mp3')
+                sound_folder = "sounds"
+                file_name = "ДаКапитан.mp3"
+                file_path = os.path.join(sound_folder, file_name)
+                button_click_sound = pygame.mixer.Sound(file_path)
                 button_click_sound.play()
 
                 time.sleep(1)  
@@ -52,10 +59,17 @@ def menu_anim():
         pygame.display.flip()
 
        
-    video = VideoFileClip("introduction.mp4")
-    background_music = AudioFileClip("ТемаМеню.mp3")
+    video_path = os.path.join("menu", "introduction.mp4")
+
+    sound_folder = "sounds"
+    background_music_file = "ТемаМеню.mp3"
+    background_music_path = os.path.join(sound_folder, background_music_file)
+
+    video = VideoFileClip(video_path)
+    background_music = AudioFileClip(background_music_path)
     background_music = background_music.set_duration(video.duration)
     video_with_music = video.set_audio(background_music)
     video_with_music.preview()
     pygame.mixer.music.stop()
     pygame.display.flip()
+
