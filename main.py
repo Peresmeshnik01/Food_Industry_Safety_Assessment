@@ -20,7 +20,7 @@ menu_anim()
 time.sleep(1)
 screen = pygame.display.set_mode((1000, 522))
 pygame.display.set_caption("Quiz Game")
-pygame.mixer.music.load('Quiz1.mp3')
+pygame.mixer.music.load(os.path.join("sounds", 'Quiz1.mp3'))
 pygame.mixer.music.play(-1)
 while running and questions_num < len(questions):
     current_question = questions[questions_num]
@@ -43,3 +43,4 @@ while running and questions_num < len(questions):
             rez1.save_results_to_csv(guesses, answers, file_path)
 pygame.quit()
 sys.exit()
+
