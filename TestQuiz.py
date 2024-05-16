@@ -1,6 +1,7 @@
 import pygame
 import os
 import shutil
+import zipfile
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -45,9 +46,8 @@ buttons = [
     [Button(50, 150, images[2][0]), Button(500, 150, images[2][1])]
 ]
 
-def display_question(screen, question, options, images):
+def display_question(screen, question, options, images, questions_num):
     screen.fill((255, 255, 255))
-    
     text_question = font.render(question, True, (0, 0, 0))
     screen.blit(text_question, (50, 50))
     if questions_num < len(questions):
@@ -57,55 +57,44 @@ def display_question(screen, question, options, images):
     pygame.display.flip()
 def save_image(user_answer, question_num):
     image_path = f"image{question_num+1}_{user_answer}.png"
-    print(user_answer)
+    #print(user_answer)
     if user_answer == '1':
         save_folder = inner_folder
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
-        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        print(f"Изображение {user_answer} сохранено в папку {save_folder}: {image_path}")
+        #destination_path = os.path.join(zip_folder, save_folder, image_path)
+        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+    
+        with zipfile.ZipFile(zip_path, 'a') as myzip:
+            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
         save_folder = "spoiled"
         user_answer = '2'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
-        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        print(f"Изображение {user_answer} сохранено в папку {save_folder}: {image_path}")
+        #destination_path = os.path.join(zip_folder, save_folder, image_path)
+        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+    
+        with zipfile.ZipFile(zip_path, 'a') as myzip:
+            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
     elif user_answer == '2':
         save_folder = inner_folder
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
-        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        print(f"Изображение {user_answer} сохранено в папку {save_folder}: {image_path}")
+        #destination_path = os.path.join(zip_folder, save_folder, image_path)
+        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+    
+        with zipfile.ZipFile(zip_path, 'a') as myzip:
+            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
         save_folder = "spoiled"
         user_answer = '1'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
-        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        print(f"Изображение {user_answer} сохранено в папку {save_folder}: {image_path}")
-
-def run_game():
-    global questions_num
-    running = True
-
-    while running:
-        if questions_num < len(questions):
-            display_question(screen, questions[questions_num], options, images)
+        #destination_path = os.path.join(zip_folder, save_folder, image_path)
+        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
     
-    
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                for i, button in enumerate(buttons[questions_num]):
-                    if button.rect.collidepoint(event.pos):
-                        user_answer = options[questions_num][i]
-                        save_image(user_answer, questions_num)
-                        questions_num += 1
-
-        if questions_num >= len(questions):
-            print("Вопросы закончились")
-            
-            running = False
-            pygame.quit()
-            #pygame.display.flip()
-
+        with zipfile.ZipFile(zip_path, 'a') as myzip:
+            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
