@@ -3,6 +3,7 @@ import sys
 import os
 from menu import menu_anim
 import time
+import shutil
 from TestQuiz import display_question, screen, questions, questions_num, options, images, buttons, save_image
 pygame.init()
 
@@ -40,7 +41,13 @@ while running:
                      
     if questions_num >= len(questions):
         print("Вопросы закончились")
-            
+        # Конвертация папки в zip-архив
+        folder_to_zip = "fresh-food-vs-spoiled-food-classification"
+        zip_filename = "fresh-food-vs-spoiled-food-classification.zip"
+
+        shutil.make_archive(zip_filename, 'zip', folder_to_zip)
+        print(f"Папка {folder_to_zip} успешно сконвертирована в zip-архив {zip_filename}.")    
         running = False
         pygame.quit()
             #pygame.display.flip()
+
