@@ -41,14 +41,20 @@ class Button:
         screen.blit(self.image, self.rect)
 
 buttons = [
-    [Button(50, 150, images[0][0]), Button(500, 150, images[0][1])],
-    [Button(500, 150, images[1][0]), Button(50, 150, images[1][1])],
-    [Button(50, 150, images[2][0]), Button(500, 150, images[2][1])]
+    [Button(150, 50, images[0][0]), Button(500, 50, images[0][1])],
+    [Button(500, 50, images[1][0]), Button(150, 50, images[1][1])],
+    [Button(150, 50, images[2][0]), Button(500, 50, images[2][1])]
 ]
 
 def display_question(screen, question, options, images, questions_num):
     screen.fill((255, 255, 255))
-    text_question = font.render(question, True, (0, 0, 0))
+    background_static = pygame.image.load(os.path.join('images', 'background.jpg'))
+    bob = pygame.image.load(os.path.join('images', 'bob.png'))
+    pat = pygame.image.load(os.path.join('images', 'pat.png'))
+    screen.blit(background_static, (0, 0))
+    screen.blit(bob, (0, 0))
+    screen.blit(pat, (0, 0))
+    text_question = font.render(question, True, (255, 255, 0))
     screen.blit(text_question, (50, 50))
     if questions_num < len(questions):
         for i, option in enumerate(options[questions_num]):
@@ -60,41 +66,42 @@ def save_image(user_answer, question_num):
     #print(user_answer)
     if user_answer == '1':
         save_folder = inner_folder
-        #destination_path = os.path.join(zip_folder, save_folder, image_path)
-        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        #zip_path = os.path.join(zip_folder, f"{save_folder}")
     
-        with zipfile.ZipFile(zip_path, 'a') as myzip:
-            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        #with zipfile.ZipFile(zip_path, 'a') as myzip:
+        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
         print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
         save_folder = "spoiled"
         user_answer = '2'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        #destination_path = os.path.join(zip_folder, save_folder, image_path)
-        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
-    
-        with zipfile.ZipFile(zip_path, 'a') as myzip:
-            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        
+        #zip_path = os.path.join(zip_folder, f"{save_folder}")
+        #with zipfile.ZipFile(zip_path, 'a') as myzip:
+        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
         print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
     elif user_answer == '2':
         save_folder = inner_folder
-        #destination_path = os.path.join(zip_folder, save_folder, image_path)
-        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        #zip_path = os.path.join(zip_folder, f"{save_folder}")
     
-        with zipfile.ZipFile(zip_path, 'a') as myzip:
-            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        #with zipfile.ZipFile(zip_path, 'a') as myzip:
+        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
         print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
         save_folder = "spoiled"
         user_answer = '1'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        #destination_path = os.path.join(zip_folder, save_folder, image_path)
-        #shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        zip_path = os.path.join(zip_folder, f"{save_folder}.zip")
+        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
+        #zip_path = os.path.join(zip_folder, f"{save_folder}")
     
-        with zipfile.ZipFile(zip_path, 'a') as myzip:
-            myzip.write(os.path.join('images', 'quiz1_mc', image_path), image_path)
+        #with zipfile.ZipFile(zip_path, 'a') as myzip:
+        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
         print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
+
