@@ -28,7 +28,7 @@ images = [
 ]
 
 inner_folder = 'fresh'
-zip_folder = 'fresh-food-vs-spoiled-food-classification'
+zip_folder = 'fresh-food-vs-spoiled-food-classification\train'
 questions_num = 0
 
 class Button:
@@ -66,42 +66,35 @@ def save_image(user_answer, question_num):
     #print(user_answer)
     if user_answer == '1':
         save_folder = inner_folder
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        new_image_name = f"image{question_num+1}_{save_folder}.png"
+        destination_path = os.path.join('fresh-food-vs-spoiled-food-classification', 'train', save_folder, new_image_name)
         shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        #zip_path = os.path.join(zip_folder, f"{save_folder}")
-    
-        #with zipfile.ZipFile(zip_path, 'a') as myzip:
-        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
+        
         print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
-        save_folder = "spoiled"
+        save_folder = "spolied"
         user_answer = '2'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        new_image_name = f"image{question_num+1}_{save_folder}.png"
+        destination_path = os.path.join('fresh-food-vs-spoiled-food-classification', 'train', save_folder, new_image_name)
         shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
         
-        #zip_path = os.path.join(zip_folder, f"{save_folder}")
-        #with zipfile.ZipFile(zip_path, 'a') as myzip:
-        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
+        
         print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
     elif user_answer == '2':
         save_folder = inner_folder
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        new_image_name = f"image{question_num+1}_{save_folder}.png"
+        destination_path = os.path.join('fresh-food-vs-spoiled-food-classification', 'train', save_folder, new_image_name)
         shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        #zip_path = os.path.join(zip_folder, f"{save_folder}")
-    
-        #with zipfile.ZipFile(zip_path, 'a') as myzip:
-        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
+       
         print(f"Спанч Боб: {user_answer} относится к свежему продукту {save_folder}: {image_path}")
         
-        save_folder = "spoiled"
+        save_folder = "spolied"
         user_answer = '1'
         image_path = f"image{question_num+1}_{user_answer}.png"
-        destination_path = os.path.join(zip_folder, save_folder, image_path)
+        new_image_name = f"image{question_num+1}_{save_folder}.png"
+        destination_path = os.path.join('fresh-food-vs-spoiled-food-classification', 'train', save_folder, new_image_name)
         shutil.copy(os.path.join('images', 'quiz1_mc', image_path), destination_path)
-        #zip_path = os.path.join(zip_folder, f"{save_folder}")
-    
-        #with zipfile.ZipFile(zip_path, 'a') as myzip:
-        #    myzip.write(os.path.join('images', 'quiz1_mc', image_path), os.path.join(inner_folder, image_path))
+        
         print(f"Спанч Боб: {user_answer} относится к испорченному продукту {save_folder}: {image_path}")
 
