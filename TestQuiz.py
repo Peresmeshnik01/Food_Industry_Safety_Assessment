@@ -113,14 +113,14 @@ def display_1Q(screen, text):
     image1_spoiled = pygame.image.load(os.path.join('fresh-food-vs-spoiled-food-classification/test1/1Q', 'image1_spolied.png'))
 
     # Отображение изображения image1_fresh в координатах (50, 150)
-    screen.blit(image1_fresh, (150, 50))
+    screen.blit(image1_fresh, (500, 50))
     # Отображение изображения image1_spoiled в координатах (500, 150)
-    screen.blit(image1_spoiled, (500, 50))
+    screen.blit(image1_spoiled, (150, 50))
     text_surface = font.render(text, True, (255,156,165))
-    text_rect = text_surface.get_rect(center=(700, 400))
+    text_rect = text_surface.get_rect(center=(600, 400))
     screen.blit(text_surface, text_rect)
 
-    text_surface = font.render("Текст", True, (236, 236, 0))
+    text_surface = font.render("На каком из этих изображений присутствует свежий продукт питания?", True, (236, 236, 0))
     text_rect = text_surface.get_rect(topleft=(50, 50))
     screen.blit(text_surface, text_rect)
     pygame.display.flip()
@@ -139,7 +139,11 @@ def display_2Q(screen, text):
     # Отображение изображения image1_spoiled в координатах (500, 150)
     screen.blit(image1_spoiled, (500, 50))
     text_surface = font.render(text, True, (255,156,165))
-    text_rect = text_surface.get_rect(center=(700, 400))
+    text_rect = text_surface.get_rect(center=(600, 400))
+    screen.blit(text_surface, text_rect)
+
+    text_surface = font.render("На каком из этих изображений присутствует свежий продукт питания?", True, (236, 236, 0))
+    text_rect = text_surface.get_rect(topleft=(50, 50))
     screen.blit(text_surface, text_rect)
     pygame.display.flip()
 def display_3Q(screen, text):
@@ -157,10 +161,69 @@ def display_3Q(screen, text):
     # Отображение изображения image1_spoiled в координатах (500, 150)
     screen.blit(image1_spoiled, (500, 50))
     text_surface = font.render(text, True, (255,156,165))
-    text_rect = text_surface.get_rect(center=(700, 400))
+    text_rect = text_surface.get_rect(center=(600, 400))
+    screen.blit(text_surface, text_rect)
+
+    text_surface = font.render("На каком из этих изображений присутствует свежий продукт питания?", True, (236, 236, 0))
+    text_rect = text_surface.get_rect(topleft=(50, 50))
     screen.blit(text_surface, text_rect)
     pygame.display.flip()
+
+def display_4Q(screen, text):
+    background_static = pygame.image.load(os.path.join('images', 'background.jpg'))
+    bob = pygame.image.load(os.path.join('images', 'bob.png'))
+    pat = pygame.image.load(os.path.join('images', 'pat.png'))
+    screen.blit(background_static, (0, 0))
+    screen.blit(bob, (0, 0))
+    screen.blit(pat, (0, 0))
+    image1_fresh = pygame.image.load(os.path.join('fresh-food-vs-spoiled-food-classification/test4/1Q', 'image4_fresh.png'))
+    image1_spoiled = pygame.image.load(os.path.join('fresh-food-vs-spoiled-food-classification/test4/1Q', 'image4_spolied.png'))
+
+    # Отображение изображения image1_fresh в координатах (50, 150)
+    screen.blit(image1_fresh, (500, 50))
+    # Отображение изображения image1_spoiled в координатах (500, 150)
+    screen.blit(image1_spoiled, (150, 50))
+    text_surface = font.render(text, True, (255,156,165))
+    text_rect = text_surface.get_rect(center=(600, 400))
+    screen.blit(text_surface, text_rect)
+
+    text_surface = font.render("На каком из этих изображений присутствует свежий продукт питания?", True, (236, 236, 0))
+    text_rect = text_surface.get_rect(topleft=(50, 50))
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
+def display_5Q(screen, text):
+    background_static = pygame.image.load(os.path.join('images', 'background.jpg'))
+    bob = pygame.image.load(os.path.join('images', 'bob.png'))
+    pat = pygame.image.load(os.path.join('images', 'pat.png'))
+    screen.blit(background_static, (0, 0))
+    screen.blit(bob, (0, 0))
+    screen.blit(pat, (0, 0))
+    image1_fresh = pygame.image.load(os.path.join('fresh-food-vs-spoiled-food-classification/test5/1Q', 'image5_fresh.png'))
+    image1_spoiled = pygame.image.load(os.path.join('fresh-food-vs-spoiled-food-classification/test5/1Q', 'image5_spolied.png'))
+
+    # Отображение изображения image1_fresh в координатах (50, 150)
+    screen.blit(image1_fresh, (150, 50))
+    # Отображение изображения image1_spoiled в координатах (500, 150)
+    screen.blit(image1_spoiled, (500, 50))
+    text_surface = font.render(text, True, (255,156,165))
+    text_rect = text_surface.get_rect(center=(600, 400))
+    screen.blit(text_surface, text_rect)
+
+    text_surface = font.render("На каком из этих изображений присутствует свежий продукт питания?", True, (236, 236, 0))
+    text_rect = text_surface.get_rect(topleft=(50, 50))
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
+def end1(screen):
+    background_static = pygame.image.load(os.path.join('images', 'end1.PNG'))
+    screen.blit(background_static, (0, 0)) 
+    pygame.display.flip()
+
+def end2(screen):
+    background_static = pygame.image.load(os.path.join('images', 'end2.PNG'))
+    screen.blit(background_static, (0, 0))
+    pygame.display.flip()
 def neural_work():
+    self = 0
     display_1Q(screen, "думаю...")
     pygame.display.flip()
     train_dir = 'fresh-food-vs-spoiled-food-classification/train'
@@ -172,9 +235,10 @@ def neural_work():
     predictions, filenames = neural_network.test_model(model, test_dir)  # Присваиваем возвращаемые значения переменным predictions и filenames
     for i, prediction in enumerate(predictions):
         if prediction[0] <= threshold:  # Предполагаемый класс - 0
-            display_1Q(screen, "справа тухлый")
+            display_1Q(screen, "слева тухлый, справа свежий")
+            self += 1
         else:
-            display_1Q(screen, "слева свежий")
+            display_1Q(screen, "слева свежий, справа тухлый")
     time.sleep(2)
 
     display_2Q(screen, "думаю...")
@@ -182,10 +246,11 @@ def neural_work():
     test_dir = 'fresh-food-vs-spoiled-food-classification/test2'
     predictions, filenames = neural_network.test_model(model, test_dir)
     for i, prediction in enumerate(predictions):
-        if prediction[0] <= threshold:  # Предполагаемый класс - 0
-            display_2Q(screen, "справа тухлый")
+        if prediction[0] >= threshold:  # Предполагаемый класс - 0
+            display_2Q(screen, "слева тухлый, справа свежий")
+            self += 1
         else:
-            display_2Q(screen, "слева свежий")
+            display_2Q(screen, "слева свежий, справа тухлый")
     time.sleep(2)
 
     display_3Q(screen, "думаю...")
@@ -194,9 +259,39 @@ def neural_work():
     predictions, filenames = neural_network.test_model(model, test_dir)
     for i, prediction in enumerate(predictions):
         if prediction[0] <= threshold:  # Предполагаемый класс - 0
-            display_3Q(screen, "справа тухлый")
+            display_3Q(screen, "слева тухлый, справа свежий")
         else:
-            display_3Q(screen, "слева свежий")
-    time.sleep(4)
+            display_3Q(screen, "слева свежий, справа тухлый")
+            self+=1
+    time.sleep(2)
+
+    display_4Q(screen, "думаю...")
+    model = neural_network.train_model(train_dir, val_dir)
+    test_dir = 'fresh-food-vs-spoiled-food-classification/test4'
+    predictions, filenames = neural_network.test_model(model, test_dir)
+    for i, prediction in enumerate(predictions):
+        if prediction[0] <= threshold:  # Предполагаемый класс - 0
+            display_4Q(screen, "слева тухлый, справа свежий")
+            self+=1
+        else:
+            display_4Q(screen, "слева свежий, справа тухлый")
+    time.sleep(2)
     
+    display_5Q(screen, "думаю...")
+    model = neural_network.train_model(train_dir, val_dir)
+    test_dir = 'fresh-food-vs-spoiled-food-classification/test5'
+    predictions, filenames = neural_network.test_model(model, test_dir)
+    for i, prediction in enumerate(predictions):
+        if prediction[0] <= threshold:  # Предполагаемый класс - 0
+            display_5Q(screen, "слева тухлый, справа свежий")
+        else:
+            display_5Q(screen, "слева свежий, справа тухлый")
+            self+=1
+    time.sleep(4)
+    if self <= 3:
+        end1(screen)
+        time.sleep(4)
+    else:
+        end2(screen)
+        time.sleep(4)
     pygame.quit()
