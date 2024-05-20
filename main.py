@@ -4,7 +4,15 @@ import os
 from menu import menu_anim
 import time
 import shutil
-from TestQuiz import display_question, screen, questions, questions_num, options, images, buttons, save_image
+from TestQuiz import display_question, screen, questions, questions_num, options, images, buttons, save_image, neural_work
+
+import matplotlib.pyplot as plt 
+import tensorflow as tf 
+import pandas as pd 
+import numpy as np 
+
+import neural_network
+
 pygame.init()
 
 WHITE = (255, 255, 255)
@@ -20,8 +28,8 @@ pygame.display.set_caption("Quiz Game")
 pygame.mixer.music.load(os.path.join("sounds", 'Quiz1.mp3'))
 pygame.mixer.music.play(-1)
 
-
 running = True
+training_completed = False
 
 while running:
     global questions_num
@@ -39,15 +47,11 @@ while running:
                     save_image(user_answer, questions_num)
                     questions_num += 1
                      
-    if questions_num >= len(questions):
-        print("Вопросы закончились")
-        # Конвертация папки в zip-архив
-        folder_to_zip = "fresh-food-vs-spoiled-food-classification"
-        zip_filename = "fresh-food-vs-spoiled-food-classification.zip"
+        if questions_num >= len(questions):
+            print("Вопросы закончились")
+            training_completed = True
 
-        shutil.make_archive(zip_filename, 'zip', folder_to_zip)
-        print(f"Папка {folder_to_zip} успешно сконвертирована в zip-архив {zip_filename}.")    
+    if training_completed:
+        neural_work()
         running = False
         pygame.quit()
-            #pygame.display.flip()
-
