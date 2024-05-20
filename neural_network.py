@@ -47,8 +47,3 @@ def test_model(model, test_dir):
 
     filenames = test_generator.filenames  # Список имен файлов в генераторе
     return predictions, filenames
-    #for i, prediction in enumerate(predictions):
-    #    if prediction[0] <= threshold:  # Предполагаемый класс - 0
-    #        print(f"Image {filenames[i]} classified as spolied")
-    #    else:
-    #        print(f"Image {filenames[i]} classified as fresh")
