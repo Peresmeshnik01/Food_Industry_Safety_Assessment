@@ -3,3 +3,5 @@
 Команда для установки библиотек: pip install Pillow numpy tensorflow keras scikit-learn matplotlib pygame
 
 [Оценка безопасности пищевой промышленности.pdf](https://github.com/user-attachments/files/25471242/default.pdf)
+
+<img width="1500" height="657" alt="image" src="https://github.com/user-attachments/assets/12fbbde0-23a2-4b4c-a373-fedc15e8a0c3" />
